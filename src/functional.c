@@ -1,0 +1,137 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   functional.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/07 11:48:34 by kaoliiny          #+#    #+#             */
+/*   Updated: 2019/05/26 21:38:03 by kaoliiny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "lemin.h"
+
+t_array	*new_array(int def_size)
+{
+	int		i;
+	t_array	*new_arr;
+
+	i = 0;
+	if (!(new_arr = (t_array *)malloc(sizeof(t_array))))
+		manage_error(4);
+	new_arr->size = 0;
+	new_arr->limit = def_size - 1;
+	if (!(new_arr->links = (t_room **)malloc(sizeof(t_room *) * def_size)))
+		manage_error(4);
+	while (i < def_size)
+		new_arr->links[i++] = NULL;
+	return (new_arr);
+}
+
+bool	expandable_array(t_array **old)
+{
+	int		i;
+	t_room	**tmp_links;
+
+	i = -1;
+	tmp_links = (*old)->links;
+	if ((*old)->limit < 100)
+		(*old)->limit = (*old)->limit * 3;
+	else
+		(*old)->limit = (*old)->limit * 2;
+	if (!((*old)->links = (t_room **)malloc(sizeof(t_room *) * (*old)->limit)))
+		manage_error(4);
+	while (++i < (*old)->size && tmp_links)
+		(*old)->links[i] = tmp_links[i];
+	(*old)->links[i++] = NULL;
+	return (true);
+}
+
+t_room	*room_create(char *line)
+{
+	t_room		*new;
+	const int	size = (ft_strchr(line, ' ') - line);
+
+	if (!(new = (t_room	*)malloc(sizeof(t_room))))
+		return (NULL);
+	else
+	{
+		new->name = (char *)malloc(sizeof(char) * size + 1);
+		ft_memcpy(new->name, line, size);
+		new->name[size] = '\0';
+		line = ft_strchr(line, ' ') + 1;
+		new->x = ft_atoi(line);
+		line = ft_strchr(line, ' ') + 1;
+		new->y = ft_atoi(line);
+		new->dst_from_start = -1;
+		new->dst_from_end = -1;
+		new->links = new_array(4);
+		new->full_of_ants = false;
+		new->next = NULL;
+	}
+	return (new);
+}
+
+void	add_link(t_room **lst, char *line)
+{
+	int		i;
+	t_room	*tmp;
+	t_room	*tmp_2;
+	char	name_from[50];
+	char	*name_to;
+
+	i = 0;
+	tmp = *lst;
+	tmp_2 = *lst;
+	name_to = ft_strchr(line, '-') + 1;
+	ft_memcpy(name_from, line, (int)(ft_strchr(line, '-') - line));
+	name_from[(int)(ft_strchr(line, '-') - line)] = '\0';
+	while (tmp && !ft_strequ(tmp->name, name_from))
+		(tmp->next) ? (tmp = tmp->next) : manage_error(5);
+	while (tmp_2 && !ft_strequ(tmp_2->name, name_to))
+		(tmp_2->next) ? (tmp_2 = tmp_2->next) : manage_error(5);
+	if (!tmp->links)
+		manage_error(9);
+	while (tmp->links->links[i])
+		++i && (i == tmp->links->limit) && (expandable_array(&tmp->links));
+	(tmp->links->links[i] = tmp_2) && tmp->links->size++;
+	tmp->links->links[++i] = NULL;
+	i = 0;
+	while (tmp_2->links->links[i])
+		i++;
+	(tmp_2->links->links[i] = tmp) && tmp_2->links->size++;
+	tmp_2->links->links[++i] = NULL;
+}
+
+bool	add_new_room(t_room **lst, t_struct *main, char *line, short status)
+{
+	const char	*line_tmp = ft_strchr(line, ' ') + 1;
+	t_room		*tmp;
+	
+
+	tmp = *lst;
+	main->count_of_rooms++;
+	if (!lst || !*lst || !(*lst)->name)
+		(*lst = room_create(line)) &&
+		(tmp = *lst);
+	else
+	{
+		if (tmp->x == atoi(line_tmp) && tmp->y
+		== atoi(ft_strchr(line_tmp, ' ') + 1))
+			manage_error(6);
+		while (tmp && tmp->next && (tmp = tmp->next))
+			if ((tmp->x == atoi(line_tmp)
+				&& tmp->y == atoi(ft_strchr(line_tmp, ' ') + 1))
+				|| ft_strnstr(line, tmp->name, (size_t)(ft_strchr(line, ' ') - line)) )
+				manage_error(6);
+		tmp->next = room_create(line);
+		tmp = tmp->next;
+	}
+	if ((status == START && main->start)
+		|| (status == END && main->end))
+		manage_error(7);
+	(status == START) && (main->start = tmp);
+	(status == END) && (main->end = tmp);
+	return (true);
+}
