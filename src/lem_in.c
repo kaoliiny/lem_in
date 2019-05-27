@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:37:00 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/28 01:44:08 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/28 01:54:04 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int		main(int ac, char **av)
 	{
 		if (main.ants - main.ants_left_at_start)
 			move_the_ants(&main, &main.end, main.count_of_rooms);
-		(main.ants_left_at_start) && find_simplest_way(&main) && other_ways(&main);
+		(main.ants_left_at_start) && simplest_way(&main) && other_ways(&main);
 		ft_printf("\n");
 	}
 	return (0);

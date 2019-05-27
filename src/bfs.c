@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 17:08:55 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/28 01:47:01 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/28 02:02:18 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 bool	ant_move_from_start(t_struct *main, int i)
 {
 	main->ants_left_at_start--;
-	main->start->links->links[i]->full_of_ants
-	= main->ants - main->ants_left_at_start;
+	main->start->links->links[i]->full_of_ants =
+	main->ants - main->ants_left_at_start;
 	ft_print(main->start->links->links[i]->full_of_ants,
 	main->start->links->links[i]->name);
 	if (main->start->links->links[i] == main->end)
@@ -26,65 +26,68 @@ bool	ant_move_from_start(t_struct *main, int i)
 
 bool	other_ways(t_struct *main)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (main->start->links->links[i] && main->ants_left_at_start)
 	{
-			if (!main->start->links->links[i]->full_of_ants
-			|| main->start->links->links[i] == main->end)
+		if (!main->start->links->links[i]->full_of_ants
+		|| main->start->links->links[i] == main->end)
+		{
+			j = 0;
+			while (main->start->links->links[i]->links->links[j])
 			{
-				j = 0;
-				while (main->start->links->links[i]->links->links[j])
+				if ((main->start->links->links[i]->dst_from_end - 1
+				== main->start->links->links[i]->links->links[j]->dst_from_end)
+				&& !(main->start->links->links[i]->links->links[j] == main->start))
 				{
-					if ((main->start->links->links[i]->dst_from_end - 1
-					== main->start->links->links[i]->links->links[j]->dst_from_end)
-					&& !(main->start->links->links[i]->links->links[j] == main->start))
+					ft_printf(" ") && ant_move_from_start(main, i);
+					break ;
+				}
+				else
+				{
+					if ((main->start->links->links[i]->dst_from_end
+				== main->start->links->links[i]->links->links[j]->dst_from_end)
+				&& !(main->start->links->links[i]->links->links[j] == main->start))
 					{
 						ft_printf(" ") && ant_move_from_start(main, i);
 						break ;
 					}
-					else
-					{
-						if ((main->start->links->links[i]->dst_from_end
-					== main->start->links->links[i]->links->links[j]->dst_from_end)
-					&& !(main->start->links->links[i]->links->links[j] == main->start))
-						{
-							ft_printf(" ") && ant_move_from_start(main, i);
-							break ;
-						}
-					}
-					j++;
 				}
+				j++;
 			}
-		i++;
-	}
-	return (1);
-}
-
-bool	find_simplest_way(t_struct *main)
-{
-	int	i;
-
-	i = 0;
-	while (main->start->links->links[i])
-	{
-		while ((main->start->dst_from_end - 1) == main->start->links->links[i]->dst_from_end)
-		{
-			(!main->start->links->links[i]->full_of_ants
-			|| main->start->links->links[i] == main->end) && ant_move_from_start(main, i);
-			if (!(main->start->links->links[i] == main->end) || !main->ants_left_at_start)
-				return (1);
-			else
-				ft_printf(" ");	
 		}
 		i++;
 	}
 	return (1);
 }
 
-void	bfs_recovering(int *counts, t_room *tmp, t_room	***queue)
+bool	simplest_way(t_struct *main)
+{
+	int	i;
+
+	i = 0;
+	while (main->start->links->links[i])
+	{
+		while ((main->start->dst_from_end - 1) ==
+			main->start->links->links[i]->dst_from_end)
+		{
+			(!main->start->links->links[i]->full_of_ants
+			|| main->start->links->links[i] == main->end)
+			&& ant_move_from_start(main, i);
+			if (!(main->start->links->links[i] == main->end)
+				|| !main->ants_left_at_start)
+				return (1);
+			else
+				ft_printf(" ");
+		}
+		i++;
+	}
+	return (1);
+}
+
+void	bfs_recovering(int *counts, t_room *tmp, t_room ***queue)
 {
 	int		j;
 	short	*dst;

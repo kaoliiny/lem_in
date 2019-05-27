@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 19:25:10 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/28 01:27:45 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/28 01:56:17 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,5 @@ void	move_the_ants(t_struct *main, t_room **start, unsigned short size)
 		bfs_r(main, queue[i], &queue, &counts);
 		i++;
 	}
-    free(queue);
+	free(queue);
 }

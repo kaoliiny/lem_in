@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 11:48:34 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/28 00:11:29 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/28 01:54:43 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,8 @@ bool	is_same_coords_or_name(char *line, t_room *tmp)
 	const char	*line_tmp = ft_strchr(line, ' ') + 1;
 
 	new_line = ft_strdup(line);
-	if (tmp->x == atoi(line_tmp) && tmp->y == atoi(ft_strchr(line_tmp, ' ') + 1))
+	if (tmp->x == atoi(line_tmp)
+		&& tmp->y == atoi(ft_strchr(line_tmp, ' ') + 1))
 		manage_error(6);
 	new_line[(int)(ft_strchr(line, ' ') - line)] = '\0';
 	if (ft_strequ(new_line, tmp->name))

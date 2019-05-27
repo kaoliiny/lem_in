@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:49:01 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/28 01:41:27 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/28 02:02:48 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <limits.h>
 # include <stdbool.h>
 
-#define START 1
-#define END -1
+# define START 1
+# define END -1
 
 typedef struct s_room			t_room;
 typedef struct s_array			t_array;
@@ -55,13 +55,21 @@ struct	s_main_struct
 };
 
 t_room	*room_create(char *line);
+
 bool	add_new_room(t_room **lst, t_struct *main, char *line, short status);
+
 void	add_link(t_room **lst, char *line);
+
 void	bfs(t_room **start, unsigned short size);
-bool	find_simplest_way(t_struct *main);
+
+bool	simplest_way(t_struct *main);
+
 bool	other_ways(t_struct *main);
+
 void	move_the_ants(t_struct *main, t_room **start, unsigned short size);
+
 void	ft_print(int ant_num, char *room_name);
+
 void	manage_error(int num);
 
 #endif
