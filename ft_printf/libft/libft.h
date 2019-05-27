@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 20:41:01 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/05 21:56:06 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/28 01:35:01 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <string.h>
 # include <stdbool.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 typedef struct	s_list
 {
@@ -23,7 +25,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-# define BUFF_SIZE 4
+# define BUFF_SIZE 4096
 
 int				ft_tolower(int c);
 int				ft_toupper(int c);

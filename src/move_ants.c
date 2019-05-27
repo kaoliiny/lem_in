@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 19:25:10 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/26 22:40:37 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/28 01:27:45 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	reiteration(t_room **queue, t_room *find)
 	i = 1;
 	while (queue[i])
 	{
-		if (ft_strequ((queue[i])->name, find->name))
+		if (find && ft_strequ((queue[i])->name, find->name))
 			return (1);
 		i++;
 	}
@@ -50,14 +50,18 @@ void	bfs_r(t_struct *main, t_room *tmp, t_room ***queue, int *count)
 			i = 0;
 			while (tmp->full_of_ants && tmp->links->links[i] && tmp != main->start)
 			{
-				if (tmp->dst_from_end - 1
-					== tmp->links->links[i]->dst_from_end &&
+				if (tmp->links->links[i] != main->start && (tmp->dst_from_end - 1
+					== tmp->links->links[i]->dst_from_end) &&
+					(!tmp->links->links[i]->full_of_ants || tmp->links->links[i] == main->end))
+					ant_move(main, tmp, tmp->links->links[i]);
+				else if (tmp->links->links[i] != main->start && (tmp->dst_from_end
+					== tmp->links->links[i]->dst_from_end) &&
 					(!tmp->links->links[i]->full_of_ants || tmp->links->links[i] == main->end))
 					ant_move(main, tmp, tmp->links->links[i]);
 				i++;
 			}
 		}
-		if (!reiteration(*queue, tmp->links->links[j]))
+		if (tmp->links->links[j] && !reiteration(*queue, tmp->links->links[j]))
 		{
 			((*queue)[*count] = tmp->links->links[j]);
 			(*count)++;

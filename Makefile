@@ -4,15 +4,15 @@ NAME :=			lem-in
 
 SRC_PATH :=		src/
 INC_PATH :=		includes/
-LIB_PATH :=		libft/
+LIB_PATH :=		ft_printf/
 OBJ_PATH :=		.obj/
 
 CC :=			clang
 CFLAGS :=		-Wall -Werror -Wextra -g
-IFLAGS :=		-I $(INC_PATH) -I $(LIB_PATH)
-LFLAGS :=		-lft -L $(LIB_PATH)
+IFLAGS :=		-I $(INC_PATH) -I $(LIB_PATH) -I $(LIB_PATH)includes/  -I $(LIB_PATH)libft/
+LFLAGS :=		-lftprintf -L $(LIB_PATH)
 
-LIB :=			$(LIB_PATH)libft.a
+LIB :=			$(LIB_PATH)libftprintf.a
 HFILES :=		lemin
 FILES :=		lem_in functional bfs move_ants
 
@@ -45,4 +45,3 @@ mfclean:
 	rm -f $(NAME)
 	rm -rf $(OBJ_PATH)
 mre: mfclean all
-

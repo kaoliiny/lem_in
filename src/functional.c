@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 11:48:34 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/26 21:38:03 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/28 00:11:29 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ t_room	*room_create(char *line)
 		new->x = ft_atoi(line);
 		line = ft_strchr(line, ' ') + 1;
 		new->y = ft_atoi(line);
-		new->dst_from_start = -1;
 		new->dst_from_end = -1;
 		new->links = new_array(4);
 		new->full_of_ants = false;
@@ -104,11 +103,24 @@ void	add_link(t_room **lst, char *line)
 	tmp_2->links->links[++i] = NULL;
 }
 
+bool	is_same_coords_or_name(char *line, t_room *tmp)
+{
+	char		*new_line;
+	const char	*line_tmp = ft_strchr(line, ' ') + 1;
+
+	new_line = ft_strdup(line);
+	if (tmp->x == atoi(line_tmp) && tmp->y == atoi(ft_strchr(line_tmp, ' ') + 1))
+		manage_error(6);
+	new_line[(int)(ft_strchr(line, ' ') - line)] = '\0';
+	if (ft_strequ(new_line, tmp->name))
+		manage_error(10);
+	free(new_line);
+	return (1);
+}
+
 bool	add_new_room(t_room **lst, t_struct *main, char *line, short status)
 {
-	const char	*line_tmp = ft_strchr(line, ' ') + 1;
 	t_room		*tmp;
-	
 
 	tmp = *lst;
 	main->count_of_rooms++;
@@ -117,14 +129,9 @@ bool	add_new_room(t_room **lst, t_struct *main, char *line, short status)
 		(tmp = *lst);
 	else
 	{
-		if (tmp->x == atoi(line_tmp) && tmp->y
-		== atoi(ft_strchr(line_tmp, ' ') + 1))
-			manage_error(6);
+		is_same_coords_or_name(line, tmp);
 		while (tmp && tmp->next && (tmp = tmp->next))
-			if ((tmp->x == atoi(line_tmp)
-				&& tmp->y == atoi(ft_strchr(line_tmp, ' ') + 1))
-				|| ft_strnstr(line, tmp->name, (size_t)(ft_strchr(line, ' ') - line)) )
-				manage_error(6);
+			is_same_coords_or_name(line, tmp);
 		tmp->next = room_create(line);
 		tmp = tmp->next;
 	}
