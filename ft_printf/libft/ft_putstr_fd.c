@@ -11,9 +11,22 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "libft.h"
+
+static void	ft_putchar_fd(int n, int fd)
+{
+	write(fd, &n, 1);
+}
 
 void		ft_putstr_fd(char const *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	int i;
+
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i] != '\0')
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
 }

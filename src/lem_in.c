@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:37:00 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/28 01:54:04 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/29 20:20:58 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	manage_error(int num)
 
 void	ft_print(int ant_num, char *room_name)
 {
-	ft_printf("L%d-%s", ant_num, room_name);
+	ft_printf("L%s-%s", ft_itoa(ant_num), room_name);
 }
 
 void	parsing_loop(int fd, t_room *rooms, t_struct *main, char *line)
@@ -53,7 +53,7 @@ void	parsing_loop(int fd, t_room *rooms, t_struct *main, char *line)
 		&& !(*line == 'L') && !(*line == '#'))
 			add_new_room(&rooms, main, line, status) && (status = 0);
 		else if (ft_strchr(line, '-'))
-			add_link(&rooms, line);
+			add_link(rooms, line);
 		else
 			manage_error(2);
 		ft_printf("%s\n", line);
@@ -78,13 +78,12 @@ void	add_count_of_ants(t_struct *main, char **line)
 
 int		main(int ac, char **av)
 {
-	short		status;
+	t_array		**ways;
 	t_room		rooms;
 	t_struct	main;
 	char		*line;
 	const int	fd = (av[1]) ? open(av[1], O_RDONLY) : 0;
 
-	status = 0;
 	main.count_of_rooms = 0;
 	ft_bzero(&main, sizeof(main));
 	ft_bzero(&rooms, sizeof(rooms));
@@ -95,12 +94,14 @@ int		main(int ac, char **av)
 	bfs(&main.end, main.count_of_rooms);
 	if (main.start->dst_from_end == -1)
 		manage_error(8);
-	while (main.ants_at_the_end != main.ants)
-	{
-		if (main.ants - main.ants_left_at_start)
-			move_the_ants(&main, &main.end, main.count_of_rooms);
-		(main.ants_left_at_start) && simplest_way(&main) && other_ways(&main);
-		ft_printf("\n");
-	}
+	find_the_ways(&ways, &main);
+	// while (main.ants_at_the_end != main.ants)
+	// {
+	// 	if (main.ants - main.ants_left_at_start)
+	// 		move_the_ants(&main, &main.end, main.count_of_rooms);
+	// 	(main.ants_left_at_start) && simplest_way(&main) && other_ways(&main);
+	// 	ft_printf("\n") && (main.space = false);
+	// 	set_moves_to_zero(&main);
+	// }
 	return (0);
 }

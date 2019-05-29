@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaoliiny <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kaoliiny <kaoliiny@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 20:53:31 by kaoliiny          #+#    #+#             */
-/*   Updated: 2018/11/09 14:44:43 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2018/11/17 17:33:54 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_strdel(char **ap)
 {
-	if (!ap)
+	if (!ap || !*ap)
 		return ;
 	free(*ap);
 	*ap = NULL;

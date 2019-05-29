@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:49:01 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/28 02:02:48 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/29 16:31:29 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <limits.h>
 # include <stdbool.h>
 
+# define MAX_COUNT_OF_WAYS 20
 # define START 1
 # define END -1
 
@@ -35,6 +36,7 @@ struct	s_room
 	int				y;
 	short			dst_from_end;
 	unsigned short	full_of_ants;
+	bool			visited;
 };
 
 struct	s_array
@@ -52,21 +54,22 @@ struct	s_main_struct
 	t_room			*start;
 	t_room			*end;
 	unsigned short	count_of_rooms;
+	bool			space;
 };
+
+t_array *new_array(int def_size);
 
 t_room	*room_create(char *line);
 
 bool	add_new_room(t_room **lst, t_struct *main, char *line, short status);
 
-void	add_link(t_room **lst, char *line);
+void	add_link(t_room *lst, char *line);
 
 void	bfs(t_room **start, unsigned short size);
 
-bool	simplest_way(t_struct *main);
+bool	simplest_way(t_struct *main, t_array **ways, int way_num);
 
-bool	other_ways(t_struct *main);
-
-void	move_the_ants(t_struct *main, t_room **start, unsigned short size);
+void	find_the_ways(t_array ***ways, t_struct *main);
 
 void	ft_print(int ant_num, char *room_name);
 

@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 11:48:34 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/28 01:54:43 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/29 17:09:16 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ t_array	*new_array(int def_size)
 	t_array	*new_arr;
 
 	i = 0;
-	if (!(new_arr = (t_array *)malloc(sizeof(t_array))))
+	if (!(new_arr = ft_memalloc(sizeof(t_array))))
 		manage_error(4);
 	new_arr->size = 0;
 	new_arr->limit = def_size - 1;
-	if (!(new_arr->links = (t_room **)malloc(sizeof(t_room *) * def_size)))
+	if (!(new_arr->links = ft_memalloc(sizeof(t_room *) * def_size)))
 		manage_error(4);
 	while (i < def_size)
 		new_arr->links[i++] = NULL;
@@ -66,13 +66,14 @@ t_room	*room_create(char *line)
 		new->y = ft_atoi(line);
 		new->dst_from_end = -1;
 		new->links = new_array(4);
-		new->full_of_ants = false;
+		new->full_of_ants = 0;
+		new->visited = false;
 		new->next = NULL;
 	}
 	return (new);
 }
 
-void	add_link(t_room **lst, char *line)
+void	add_link(t_room *lst, char *line)
 {
 	int		i;
 	t_room	*tmp;
@@ -81,8 +82,8 @@ void	add_link(t_room **lst, char *line)
 	char	*name_to;
 
 	i = 0;
-	tmp = *lst;
-	tmp_2 = *lst;
+	tmp = lst;
+	tmp_2 = lst;
 	name_to = ft_strchr(line, '-') + 1;
 	ft_memcpy(name_from, line, (int)(ft_strchr(line, '-') - line));
 	name_from[(int)(ft_strchr(line, '-') - line)] = '\0';
@@ -98,7 +99,7 @@ void	add_link(t_room **lst, char *line)
 	tmp->links->links[++i] = NULL;
 	i = 0;
 	while (tmp_2->links->links[i])
-		i++;
+		++i && (i == tmp_2->links->limit) && (expandable_array(&tmp_2->links));;
 	(tmp_2->links->links[i] = tmp) && tmp_2->links->size++;
 	tmp_2->links->links[++i] = NULL;
 }

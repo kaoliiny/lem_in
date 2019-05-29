@@ -4,3 +4,4 @@ lem-in
 */*.a
 */*/*.a
 generator.uu
+.DS_Store

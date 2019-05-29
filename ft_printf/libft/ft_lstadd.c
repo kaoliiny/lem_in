@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_array.c                                    :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaoliiny <kaoliiny@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: kaoliiny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/06 20:52:34 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/03/07 18:28:06 by kaoliiny         ###   ########.fr       */
+/*   Created: 2018/11/08 15:19:26 by kaoliiny          #+#    #+#             */
+/*   Updated: 2018/11/12 19:15:47 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	free_array(char ***free_me)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	int	i;
+	t_list *el;
 
-	i = 0;
-	while ((*free_me)[i])
-		free((*free_me)[i++]);
-	free(*free_me);
-	free_me = NULL;
+	if (!alst || !new)
+		return ;
+	el = *alst;
+	new->next = *alst;
+	*alst = new;
 }

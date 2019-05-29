@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaoliiny <kaoliiny@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 12:36:40 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/28 01:35:04 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/03/05 18:03:06 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 # include "colours.h"
 # include <stdarg.h>
+# include "stdbool.h"
 # include "libft.h"
 
+# define BUFF_SIZE 4096
 # define ABS(Value)	((Value) < 0 ? -(Value) : (Value))
 # define PREC	f->fl.precision
 # define MWID	f->fl.min_width

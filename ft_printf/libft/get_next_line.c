@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaoliiny <kaoliiny@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 12:55:09 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/07 22:25:48 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2018/11/24 00:26:09 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
-#include <unistd.h>
 
 static t_list	*ft_check_fd(t_list **lst, const int fd)
 {

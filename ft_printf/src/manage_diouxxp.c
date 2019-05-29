@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 00:01:03 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/21 15:51:03 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:23:06 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void			handling_decimal(size_t number, t_format *f)
 	while (PREC-- > 0)
 		manage_buff('0', f);
 	if (is_print)
-		while (*num) 
+		while (*num)
 			manage_buff(*num++, f);
 	while (MWID-- > 0)
 		manage_buff(' ', f);

@@ -3,46 +3,92 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+         #
+#    By: kaoliiny <kaoliiny@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/27 19:37:45 by kaoliiny          #+#    #+#              #
-#    Updated: 2019/05/05 21:59:28 by kaoliiny         ###   ########.fr        #
+#    Updated: 2018/11/17 17:49:32 by kaoliiny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re
+NAME := libft.a
+SRCS :=	ft_strcmp \
+	ft_toupper \
+	ft_strcpy \
+	ft_strdup \
+	ft_atoi \
+	ft_strlen \
+	ft_isalnum \
+	ft_strncat \
+	ft_isalpha \
+	ft_strncmp \
+	ft_isascii \
+	ft_strncpy \
+	ft_isdigit \
+	ft_strnstr \
+	ft_isprint \
+	ft_strrchr \
+	ft_strcat \
+	ft_strstr \
+	ft_strchr \
+	ft_tolower \
+	ft_memmove \
+	ft_memcpy \
+	ft_memccpy \
+	ft_memcmp \
+	ft_memset \
+	ft_bzero \
+	ft_memchr \
+	ft_strlcat \
+	ft_putstr_fd \
+	ft_putchar_fd \
+	ft_putendl_fd \
+	ft_putendl \
+	ft_putnbr_fd \
+	ft_putnbr \
+	ft_putstr \
+	ft_putchar \
+	ft_memalloc \
+	ft_memdel \
+	ft_strnew \
+	ft_strdel \
+	ft_strclr \
+	ft_striter \
+	ft_striteri \
+	ft_strmap \
+	ft_strmapi \
+	ft_strequ \
+	ft_strnequ \
+	ft_strsub \
+	ft_strsplit \
+	ft_strjoin \
+	ft_lstnew \
+	ft_lstdelone \
+	ft_randint \
+	ft_lstadd \
+	ft_lstiter \
+	ft_strtrim \
+	ft_lstdel \
+	ft_itoa \
+	ft_lstmap \
+	get_next_line \
+	is_num \
+	ft_chr_count
 
-NAME = libft.a
-SRC	:=			ft_strcmp.c ft_toupper.c ft_strcpy.c	ft_strdup.c ft_atoi.c	ft_strlen.c	ft_isalnum.c ft_strncat.c ft_isalpha.c ft_strncmp.c	ft_isascii.c ft_strncpy.c	ft_isdigit.c	ft_strnstr.c	ft_isprint.c ft_strrchr.c ft_strcat.c ft_strstr.c ft_strchr.c	ft_tolower.c	ft_memmove.c	ft_memcpy.c	ft_memccpy.c	ft_memcmp.c	ft_memset.c	ft_bzero.c	ft_memchr.c	ft_strlcat.c	ft_putstr_fd.c	ft_putchar_fd.c	ft_putendl_fd.c	ft_putendl.c	ft_putnbr_fd.c	ft_putnbr.c	ft_putstr.c	ft_putchar.c	ft_memalloc.c	ft_memdel.c	ft_strnew.c	ft_strdel.c	ft_strclr.c	ft_striter.c	ft_striteri.c	ft_strmap.c	ft_strmapi.c	ft_strequ.c	ft_strnequ.c	ft_strsub.c	ft_strsplit.c	ft_strjoin.c	ft_lstnew.c	ft_lstdelone.c	ft_randint.c	ft_lstiter.c	ft_strtrim.c	ft_lstdel.c	ft_itoa.c	ft_free_array.c	ft_lstmap.c	get_next_line.c	is_num.c ft_chr_count.c
-
-NAME :=			libft.a
-
-OBJ_PATH :=		.obj/
-# PRINTF_PATH :=	ft_printf/
-# PRINTF_SPATH :=	ft_printf/src/
-
-CC :=			clang
-CFLAGS :=		-Wall -Werror -Wextra
-IFLAGS :=		-I . #-I $(PRINTF_PATH)includes/
-
-SRCS +=			$(SRC)
-# SRCS +=			$(addprefix $(PRINTF_SPATH), $(PRINTFSRCS))
-OBJS :=			$(addprefix $(OBJ_PATH), $(SRCS:%.c=%.o))
+SRC := $(addsuffix .c, $(SRCS))
+INC := includes
+CFLAGS := -Wall -Wextra -Werror
+LIBS := $(SRC:%.c=%.o)
 
 
 all: $(NAME)
 
-$(NAME):		$(OBJ_PATH) $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
-
-$(OBJ_PATH):
-	mkdir -p $(OBJ_PATH)
-$(OBJ_PATH)%.o:	%.c
-	$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
+$(NAME):
+	gcc -c $(SRC) -I $(INC) $(CFLAGS)
+	ar rc libft.a $(LIBS)
+	ranlib libft.a
 
 clean:
-	rm -rf $(OBJ_PATH)
+	/bin/rm -f $(LIBS)
 fclean: clean
-	rm -f $(NAME)
+	/bin/rm -f libft.a
 re: fclean all

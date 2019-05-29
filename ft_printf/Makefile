@@ -57,7 +57,3 @@ mfclean:
 	rm -f $(NAME)
 
 mre: mfclean all
-
-test: all
-	$(CC) -o unittest.out $(INCLUDE) $(NAME) unittest.c
-	./unittest.out

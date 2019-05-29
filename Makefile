@@ -24,7 +24,7 @@ OBJS :=			$(addprefix $(OBJ_PATH), $(SRCS:%.c=%.o))
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ_PATH) $(OBJS)
-	@ $(CC) $(CFLAGS) $(IFLAGS) $(LFLAGS) -fsanitize="address" $(OBJS) -o $(NAME)
+	@ $(CC) $(CFLAGS) $(IFLAGS) $(LFLAGS) $(OBJS) -o $(NAME)
 $(LIB):
 	@ $(MAKE) -C $(dir $@) $(notdir $@)
 

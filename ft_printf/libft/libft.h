@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 20:41:01 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/28 01:35:01 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/28 15:23:55 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 # define LIBFT_H
 
 # include <string.h>
-# include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdbool.h>
+
+# define BUFF_SIZE 4096
 
 typedef struct	s_list
 {
@@ -24,8 +26,6 @@ typedef struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
-
-# define BUFF_SIZE 4096
 
 int				ft_tolower(int c);
 int				ft_toupper(int c);
@@ -77,7 +77,7 @@ void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 char			*ft_strmap(char const *s, char (*f)(char));
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
-char			*ft_itoa(int n);
+char			*ft_itoa(size_t n);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
 char			*ft_strjoin(char const *s1, char const *s2);
@@ -102,12 +102,12 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 
 int				ft_randint(void);
-int				ft_chr_count(char *line, char symbol);
-bool			is_num(const char *str, void(*f)(int), const int error_num);
 void			ft_capitalize(char *str);
-void			free_array(char***free_me);
+bool			is_num(const char *str, void (*f)(int), int error_num);
+int				ft_chr_count(char *line, char symbol);
 void			ft_sort_params(int argc, char **argv);
-void			sort_int_tab(int **tab, unsigned int size);
+void			sort_int_tab(int *tab, unsigned int size);
+void			ft_list_push_back(t_list **begin_list, void *data);
 
 int				get_next_line(const int fd, char **line);
 
