@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 20:41:01 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/28 15:23:55 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/31 17:23:20 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,14 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-# define BUFF_SIZE 4096
+# define BUFF_SIZE 2048
+
+typedef struct		s_chain
+{
+	int				fd;
+	char			*save;
+	struct s_chain	*next;
+}					t_chain;
 
 typedef struct	s_list
 {

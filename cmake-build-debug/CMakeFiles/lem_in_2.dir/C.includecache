@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../ft_printf/includes/colours.h
+
+../ft_printf/includes/ft_printf.h
+colours.h
+../ft_printf/includes/colours.h
+stdarg.h
+-
+stdbool.h
+../ft_printf/includes/stdbool.h
+libft.h
+../ft_printf/includes/libft.h
+
+../ft_printf/libft/libft.h
+string.h
+-
+unistd.h
+-
+stdlib.h
+-
+stdbool.h
+-
+
+../includes/lemin.h
+ft_printf.h
+../includes/ft_printf.h
+fcntl.h
+-
+stdlib.h
+-
+limits.h
+-
+stdbool.h
+-
+
+/Users/kaoliiny/Desktop/lem_in 2/src/lem_in.c
+lemin.h
+/Users/kaoliiny/Desktop/lem_in 2/src/lemin.h
+

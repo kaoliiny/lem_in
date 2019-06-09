@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaoliiny <kaoliiny@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 12:36:40 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/03/05 18:03:06 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/05/31 17:23:39 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "stdbool.h"
 # include "libft.h"
 
-# define BUFF_SIZE 4096
 # define ABS(Value)	((Value) < 0 ? -(Value) : (Value))
 # define PREC	f->fl.precision
 # define MWID	f->fl.min_width

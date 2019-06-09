@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:37:00 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/29 20:20:58 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/09 20:19:30 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,30 +78,20 @@ void	add_count_of_ants(t_struct *main, char **line)
 
 int		main(int ac, char **av)
 {
-	t_array		**ways;
+	t_array		ways;
 	t_room		rooms;
 	t_struct	main;
 	char		*line;
 	const int	fd = (av[1]) ? open(av[1], O_RDONLY) : 0;
 
+	main.dst = 0;
 	main.count_of_rooms = 0;
-	ft_bzero(&main, sizeof(main));
-	ft_bzero(&rooms, sizeof(rooms));
+	ft_bzero(&main, sizeof(t_struct));
+	ft_bzero(&rooms, sizeof(t_room));
 	if (!get_next_line(fd, &line) || ac > 2)
 		manage_error(1);
 	add_count_of_ants(&main, &line);
 	parsing_loop(fd, &rooms, &main, line);
-	bfs(&main.end, main.count_of_rooms);
-	if (main.start->dst_from_end == -1)
-		manage_error(8);
-	find_the_ways(&ways, &main);
-	// while (main.ants_at_the_end != main.ants)
-	// {
-	// 	if (main.ants - main.ants_left_at_start)
-	// 		move_the_ants(&main, &main.end, main.count_of_rooms);
-	// 	(main.ants_left_at_start) && simplest_way(&main) && other_ways(&main);
-	// 	ft_printf("\n") && (main.space = false);
-	// 	set_moves_to_zero(&main);
-	// }
+	find_the_ways(&main, &ways);
 	return (0);
 }

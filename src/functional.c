@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 11:48:34 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/05/29 17:09:16 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/04 01:57:38 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	expandable_array(t_array **old)
 		(*old)->limit = (*old)->limit * 3;
 	else
 		(*old)->limit = (*old)->limit * 2;
-	if (!((*old)->links = (t_room **)malloc(sizeof(t_room *) * (*old)->limit)))
+	if (!((*old)->links = ft_memalloc(sizeof(t_room *) * (*old)->limit)))
 		manage_error(4);
 	while (++i < (*old)->size && tmp_links)
 		(*old)->links[i] = tmp_links[i];
@@ -53,13 +53,12 @@ t_room	*room_create(char *line)
 	t_room		*new;
 	const int	size = (ft_strchr(line, ' ') - line);
 
-	if (!(new = (t_room	*)malloc(sizeof(t_room))))
-		return (NULL);
+	if (!(new = ft_memalloc(sizeof(t_room))))
+		manage_error(4);
 	else
 	{
-		new->name = (char *)malloc(sizeof(char) * size + 1);
+		new->name = ft_memalloc(sizeof(char) * (size + 1));
 		ft_memcpy(new->name, line, size);
-		new->name[size] = '\0';
 		line = ft_strchr(line, ' ') + 1;
 		new->x = ft_atoi(line);
 		line = ft_strchr(line, ' ') + 1;
@@ -68,6 +67,7 @@ t_room	*room_create(char *line)
 		new->links = new_array(4);
 		new->full_of_ants = 0;
 		new->visited = false;
+		new->parent = NULL;
 		new->next = NULL;
 	}
 	return (new);
@@ -84,7 +84,7 @@ void	add_link(t_room *lst, char *line)
 	i = 0;
 	tmp = lst;
 	tmp_2 = lst;
-	name_to = ft_strchr(line, '-') + 1;
+	name_to = ft_strdup(ft_strchr(line, '-') + 1);
 	ft_memcpy(name_from, line, (int)(ft_strchr(line, '-') - line));
 	name_from[(int)(ft_strchr(line, '-') - line)] = '\0';
 	while (tmp && !ft_strequ(tmp->name, name_from))
@@ -99,7 +99,7 @@ void	add_link(t_room *lst, char *line)
 	tmp->links->links[++i] = NULL;
 	i = 0;
 	while (tmp_2->links->links[i])
-		++i && (i == tmp_2->links->limit) && (expandable_array(&tmp_2->links));;
+		++i && (i == tmp_2->links->limit) && (expandable_array(&tmp_2->links));
 	(tmp_2->links->links[i] = tmp) && tmp_2->links->size++;
 	tmp_2->links->links[++i] = NULL;
 }

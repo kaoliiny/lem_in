@@ -1,0 +1,97 @@
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  "C"
+  )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_C
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_atoi.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_atoi.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_bzero.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_bzero.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_capitalizer.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_capitalizer.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_chr_count.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_chr_count.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_isalnum.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_isalnum.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_isalpha.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_isalpha.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_isascii.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_isascii.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_isdigit.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_isdigit.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_isprint.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_isprint.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_itoa.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_itoa.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_lstadd.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_lstadd.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_lstdel.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_lstdel.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_lstdelone.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_lstdelone.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_lstiter.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_lstiter.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_lstmap.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_lstmap.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_lstnew.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_lstnew.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_memalloc.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_memalloc.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_memccpy.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_memccpy.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_memchr.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_memchr.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_memcmp.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_memcmp.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_memcpy.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_memcpy.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_memdel.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_memdel.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_memmove.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_memmove.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_memset.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_memset.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_putchar.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_putchar.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_putchar_fd.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_putchar_fd.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_putendl.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_putendl.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_putendl_fd.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_putendl_fd.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_putnbr.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_putnbr.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_putnbr_fd.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_putnbr_fd.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_putstr.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_putstr.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_putstr_fd.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_putstr_fd.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_randint.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_randint.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_sort_params.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_sort_params.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strcat.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strcat.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strchr.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strchr.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strclr.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strclr.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strcmp.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strcmp.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strcpy.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strcpy.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strdel.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strdel.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strdup.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strdup.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strequ.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strequ.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_striter.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_striter.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_striteri.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_striteri.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strjoin.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strjoin.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strlcat.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strlcat.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strlen.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strlen.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strmap.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strmap.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strmapi.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strmapi.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strncat.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strncat.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strncmp.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strncmp.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strncpy.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strncpy.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strnequ.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strnequ.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strnew.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strnew.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strnstr.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strnstr.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strrchr.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strrchr.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strsplit.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strsplit.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strstr.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strstr.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strsub.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strsub.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_strtrim.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_strtrim.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_tolower.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_tolower.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/ft_toupper.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/ft_toupper.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/get_next_line.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/get_next_line.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/is_num.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/is_num.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/libft/sort_int_tab.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/libft/sort_int_tab.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/src/add_ft.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/src/add_ft.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/src/ft_printf.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/src/ft_printf.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/src/manage_conv.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/src/manage_conv.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/src/manage_cs_per.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/src/manage_cs_per.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/src/manage_diouxxp.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/src/manage_diouxxp.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/ft_printf/src/manage_float.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/ft_printf/src/manage_float.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/src/bfs.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/src/bfs.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/src/functional.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/src/functional.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/src/lem_in.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/src/lem_in.c.o"
+  "/Users/kaoliiny/Desktop/lem_in 2/src/move_ants.c" "/Users/kaoliiny/Desktop/lem_in 2/cmake-build-debug/CMakeFiles/lem_in_2.dir/src/move_ants.c.o"
+  )
+set(CMAKE_C_COMPILER_ID "AppleClang")
+
+# The include file search paths:
+set(CMAKE_C_TARGET_INCLUDE_PATH
+  "../ft_printf/includes"
+  "../ft_printf/libft"
+  "../includes"
+  )
+
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

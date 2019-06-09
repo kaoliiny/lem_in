@@ -20,7 +20,6 @@ HDRS :=			$(addprefix $(INC_PATH), $(addsuffix .h, $(HFILES)))
 SRCS :=			$(addprefix $(SRC_PATH), $(addsuffix .c, $(FILES)))
 OBJS :=			$(addprefix $(OBJ_PATH), $(SRCS:%.c=%.o))
 
-
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ_PATH) $(OBJS)
