@@ -6,45 +6,13 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 17:08:55 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/04 01:57:35 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/12 00:13:46 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-void	find_the_ways(t_struct *main, t_array *ways)
-{
-	int		i;
-	int		j;
-	t_room	*tmp;
-
-	i = 0;
-	ways = new_array(100);
-	while ((ways->links[i] = bfs(main, &main->end, main->count_of_rooms)))
-	{
-		if (i == 0 && main->start->dst_from_end == -1)
-			manage_error(8);
-		tmp = main->start;
-		while (tmp->next)
-		{
-			tmp->visited = 0;
-			tmp->dst_from_end = -1;
-			tmp = tmp->next;
-		}
-		j = -1;
-		tmp->dst_from_end = -1;
-		while ((tmp = ways->links[++j]))
-			while (tmp && tmp->parent)
-			{
-				tmp->visited = 1;
-				tmp = tmp->parent;
-			}
-		i++;
-	}
-	move_the_ants(main, ways);
-}
-
-void	bfs_recovering(int *counts, t_room *tmp, t_room ***queue)
+static void		bfs_recovering(int *counts, t_room *tmp, t_room ***queue)
 {
 	int		j;
 	short	*dst;
@@ -56,7 +24,7 @@ void	bfs_recovering(int *counts, t_room *tmp, t_room ***queue)
 	{
 		dst_of_j_point = &tmp->links->links[j]->dst_from_end;
 		(*dst == -1) && (*dst = 0);
-		if (!tmp->links->links[j]->visited)
+		if (tmp->links->links[j] && !tmp->links->links[j]->visited)
 		{
 			tmp->links->links[j]->visited = 1;
 			tmp->links->links[j]->parent = tmp;
@@ -68,7 +36,7 @@ void	bfs_recovering(int *counts, t_room *tmp, t_room ***queue)
 	}
 }
 
-t_room	*bfs(t_struct *main, t_room **start, unsigned short size)
+static t_room	*bfs(t_struct *main, t_room *start, unsigned short size)
 {
 	int		i;
 	int		counts;
@@ -77,7 +45,7 @@ t_room	*bfs(t_struct *main, t_room **start, unsigned short size)
 	i = 0;
 	queue = ft_memalloc(sizeof(t_room *) * (size + 2));
 	counts = 1;
-	queue[i] = *start;
+	queue[i] = start;
 	queue[i]->visited = 1;
 	while (queue[i] && i < size)
 	{
@@ -88,4 +56,33 @@ t_room	*bfs(t_struct *main, t_room **start, unsigned short size)
 	}
 	free(queue);
 	return (0);
+}
+
+void			find_the_ways(t_struct *main, t_array *ways)
+{
+	int		i;
+	int		j;
+	t_room	*tmp;
+
+	i = -1;
+	ways = new_array(100);
+	while ((ways->links[++i] = bfs(main, main->end, main->count_of_rooms)))
+	{
+		if (i == 0 && main->start->dst_from_end == -1)
+			manage_error(8);
+		tmp = main->start;
+		while (tmp->next)
+		{
+			tmp->visited = 0;
+			tmp->dst_from_end = -1;
+			tmp = tmp->next;
+		}
+		j = -1;
+		tmp->visited = 0;
+		tmp->dst_from_end = -1;
+		while ((tmp = ways->links[++j]))
+			while (tmp && tmp->parent && (tmp->visited = 1))
+				tmp = tmp->parent;
+	}
+	move_the_ants(main, ways);
 }

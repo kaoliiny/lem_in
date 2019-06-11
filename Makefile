@@ -4,17 +4,17 @@ NAME :=			lem-in
 
 SRC_PATH :=		src/
 INC_PATH :=		includes/
-LIB_PATH :=		ft_printf/
+LIB_PATH :=		libft/
 OBJ_PATH :=		.obj/
 
 CC :=			clang
 CFLAGS :=		-Wall -Werror -Wextra -g
-IFLAGS :=		-I $(INC_PATH) -I $(LIB_PATH) -I $(LIB_PATH)includes/  -I $(LIB_PATH)libft/
-LFLAGS :=		-lftprintf -L $(LIB_PATH)
+IFLAGS :=		-I $(INC_PATH) -I $(LIB_PATH) -I $(LIB_PATH)includes/
+LFLAGS :=		-L $(LIB_PATH) -lft
 
-LIB :=			$(LIB_PATH)libftprintf.a
+LIB :=			$(LIB_PATH)libft.a
 HFILES :=		lemin
-FILES :=		lem_in functional bfs move_ants
+FILES :=		lem_in functional bfs move_ants arrays
 
 HDRS :=			$(addprefix $(INC_PATH), $(addsuffix .h, $(HFILES)))
 SRCS :=			$(addprefix $(SRC_PATH), $(addsuffix .c, $(FILES)))

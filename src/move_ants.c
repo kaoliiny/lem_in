@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 19:25:10 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/09 20:38:57 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/12 00:13:49 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,13 @@ void	move_the_ants_from_start(t_struct *main, t_array *ways)
 	i = 0;
 	while (ways->links[i])
 	{
-		dst = 1;
+		dst = 3;
 		tmp = ways->links[i];
-		while (tmp && tmp->parent)
-		{
+		while (tmp && tmp->parent && dst++)
 			tmp = tmp->parent;
-			dst++;
-		}
 		if (!tmp->full_of_ants && main->ants_left_at_start)
 		{
-			if (dst * (main->ants - main->ants_left_at_start) - main->dst < main->ants_left_at_start)
+			if ((dst * i - main->dst) < main->ants_left_at_start)
 			{
 				(main->space) && ft_printf(" ");
 				(!main->space) && (main->space = 1);
@@ -85,6 +82,7 @@ void	move_the_ants_from_start(t_struct *main, t_array *ways)
 		}
 		i++;
 	}
+	main->dst = 0;
 }
 
 void	move_the_ants(t_struct *main, t_array *ways)
@@ -95,10 +93,8 @@ void	move_the_ants(t_struct *main, t_array *ways)
 	i = 0;
 	while (ways && ways->links[i])
 		rev_ways(main, ways->links + i++);
-	ft_printf("\n");
-	while (!(main->ants_at_the_end == main->ants))
+	while (!(main->ants_at_the_end == main->ants) && (i = 0) | 1)
 	{
-		i = 0;
 		main->space = false;
 		while (ways->links[i] && !(main->ants_at_the_end == main->ants))
 		{

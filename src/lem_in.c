@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:37:00 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/09 20:19:30 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/12 00:13:47 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	manage_error(int num)
 
 void	ft_print(int ant_num, char *room_name)
 {
-	ft_printf("L%s-%s", ft_itoa(ant_num), room_name);
+	ft_printf("L%d-%s", ant_num, room_name);
 }
 
 void	parsing_loop(int fd, t_room *rooms, t_struct *main, char *line)
@@ -50,7 +50,7 @@ void	parsing_loop(int fd, t_room *rooms, t_struct *main, char *line)
 			(ft_strequ(line, "##end")) && (status = END);
 		}
 		else if (ft_chr_count(line, ' ') == 2
-		&& !(*line == 'L') && !(*line == '#'))
+			&& !(*line == 'L') && !(*line == '#'))
 			add_new_room(&rooms, main, line, status) && (status = 0);
 		else if (ft_strchr(line, '-'))
 			add_link(rooms, line);
@@ -78,20 +78,22 @@ void	add_count_of_ants(t_struct *main, char **line)
 
 int		main(int ac, char **av)
 {
-	t_array		ways;
-	t_room		rooms;
-	t_struct	main;
+	t_array		*ways;
+	t_room		*rooms;
+	t_struct	*main;
 	char		*line;
 	const int	fd = (av[1]) ? open(av[1], O_RDONLY) : 0;
 
-	main.dst = 0;
-	main.count_of_rooms = 0;
-	ft_bzero(&main, sizeof(t_struct));
-	ft_bzero(&rooms, sizeof(t_room));
+	main = ft_memalloc(sizeof(t_struct));
+	rooms = ft_memalloc(sizeof(t_room));
+	ways = ft_memalloc(sizeof(t_array));
+	main->dst = 0;
+	main->count_of_rooms = 0;
 	if (!get_next_line(fd, &line) || ac > 2)
 		manage_error(1);
-	add_count_of_ants(&main, &line);
-	parsing_loop(fd, &rooms, &main, line);
-	find_the_ways(&main, &ways);
+	add_count_of_ants(main, &line);
+	parsing_loop(fd, rooms, main, line);
+	find_the_ways(main, ways);
+	system("leaks -q lem-in");
 	return (0);
 }
