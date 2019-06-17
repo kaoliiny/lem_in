@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:37:00 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/12 00:13:47 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/17 12:50:11 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,5 @@ int		main(int ac, char **av)
 	add_count_of_ants(main, &line);
 	parsing_loop(fd, rooms, main, line);
 	find_the_ways(main, ways);
-	system("leaks -q lem-in");
 	return (0);
 }

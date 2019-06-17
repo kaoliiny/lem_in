@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 17:08:55 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/12 00:13:46 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/17 12:50:03 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void		bfs_recovering(int *counts, t_room *tmp, t_room ***queue)
 static t_room	*bfs(t_struct *main, t_room *start, unsigned short size)
 {
 	int		i;
+	t_room	*tmp;
 	int		counts;
 	t_room	**queue;
 
@@ -51,7 +52,11 @@ static t_room	*bfs(t_struct *main, t_room *start, unsigned short size)
 	{
 		bfs_recovering(&counts, queue[i], &queue);
 		if (queue[i] == main->start)
-			return (queue[i]->parent);
+		{
+			tmp = queue[i]->parent;
+			free(queue);
+			return (tmp);
+		}
 		i++;
 	}
 	free(queue);
