@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_ants.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 19:25:10 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/12 00:13:49 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/17 15:49:38 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	move_the_ants_from_start(t_struct *main, t_array *ways)
 		tmp = ways->links[i];
 		while (tmp && tmp->parent && dst++)
 			tmp = tmp->parent;
-		if (!tmp->full_of_ants && main->ants_left_at_start)
+		if ((!tmp->full_of_ants || ways->links[i] == main->end) && main->ants_left_at_start)
 		{
 			if ((dst * i - main->dst) < main->ants_left_at_start)
 			{
