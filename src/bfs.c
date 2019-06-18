@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 17:08:55 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/17 15:45:06 by vbrazas          ###   ########.fr       */
+/*   Updated: 2019/06/18 20:25:53 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,15 @@ void			find_the_ways(t_struct *main, t_array *ways)
 
 	i = -1;
 	ways = new_array(100);
-	while ((ways->links[++i] = bfs(main, main->end, main->count_of_rooms)) && !(ways->links[i] == main->end))
+	while ((ways->links[++i] = bfs(main, main->end, main->count_of_rooms))
+	&& !(ways->links[i] == main->end))
 	{
 		if (i == 0 && main->start->dst_from_end == -1)
 			manage_error(8);
 		tmp = main->start;
-		while (tmp->next)
+		while (tmp->next && (tmp->dst_from_end = -1))
 		{
 			tmp->visited = 0;
-			tmp->dst_from_end = -1;
 			tmp = tmp->next;
 		}
 		j = -1;

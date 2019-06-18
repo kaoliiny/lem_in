@@ -3,27 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   move_ants.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 19:25:10 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/17 15:49:38 by vbrazas          ###   ########.fr       */
+/*   Updated: 2019/06/18 20:29:57 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-bool	ant_move_from_start(t_struct *main, t_room *to)
+void		ant_move_from_start(t_struct *main, t_room *to)
 {
-	main->ants_left_at_start--;
-	to->full_of_ants =
-	main->ants - main->ants_left_at_start;
-	ft_print(to->full_of_ants, to->name);
-	if (to == main->end)
-		main->ants_at_the_end++;
-	return (1);
+	if (main->ants_left_at_start)
+	{
+		main->ants_left_at_start--;
+		to->full_of_ants =
+		main->ants - main->ants_left_at_start;
+		ft_print(to->full_of_ants, to->name);
+		if (to == main->end)
+		{
+			main->ants_at_the_end++;
+			ft_printf(" ");
+			ant_move_from_start(main, to);
+		}
+	}
 }
 
-bool	ant_move(t_struct *main, t_room *old_room, t_room *new_room)
+static bool	ant_move(t_struct *main, t_room *old_room, t_room *new_room)
 {
 	new_room->full_of_ants = old_room->full_of_ants;
 	old_room->full_of_ants = 0;
@@ -35,7 +41,7 @@ bool	ant_move(t_struct *main, t_room *old_room, t_room *new_room)
 	return (1);
 }
 
-void	rev_ways(t_struct *main, t_room **old)
+void		rev_ways(t_struct *main, t_room **old)
 {
 	t_room	*tmp;
 	t_room	*prev;
@@ -57,7 +63,7 @@ void	rev_ways(t_struct *main, t_room **old)
 	current->parent = prev;
 }
 
-void	move_the_ants_from_start(t_struct *main, t_array *ways)
+bool		move_the_ants_from_start(t_struct *main, t_array *ways)
 {
 	int		i;
 	int		dst;
@@ -70,8 +76,8 @@ void	move_the_ants_from_start(t_struct *main, t_array *ways)
 		tmp = ways->links[i];
 		while (tmp && tmp->parent && dst++)
 			tmp = tmp->parent;
-		if ((!tmp->full_of_ants || ways->links[i] == main->end) && main->ants_left_at_start)
-		{
+		if ((!tmp->full_of_ants || ways->links[i] == main->end)
+			&& main->ants_left_at_start)
 			if ((dst * i - main->dst) < main->ants_left_at_start)
 			{
 				(main->space) && ft_printf(" ");
@@ -79,18 +85,20 @@ void	move_the_ants_from_start(t_struct *main, t_array *ways)
 				ant_move_from_start(main, tmp);
 				main->dst += dst;
 			}
-		}
 		i++;
 	}
 	main->dst = 0;
+	return (true);
 }
 
-void	move_the_ants(t_struct *main, t_array *ways)
+void		move_the_ants(t_struct *main, t_array *ways)
 {
 	int		i;
 	t_room	*tmp;
 
 	i = 0;
+	if (!ways->links[i])
+		manage_error(5);
 	while (ways && ways->links[i])
 		rev_ways(main, ways->links + i++);
 	while (!(main->ants_at_the_end == main->ants) && (i = 0) | 1)
@@ -108,8 +116,6 @@ void	move_the_ants(t_struct *main, t_array *ways)
 			}
 			i++;
 		}
-		if (main->ants_left_at_start)
-			move_the_ants_from_start(main, ways);
-		ft_printf("\n");
+		move_the_ants_from_start(main, ways) && ft_printf("\n");
 	}
 }

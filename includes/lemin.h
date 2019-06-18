@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:49:01 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/12 17:53:49 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/18 17:32:21 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ struct	s_room
 	int				x;
 	int				y;
 	short			dst_from_end;
-	unsigned short	full_of_ants;
+	unsigned int	full_of_ants;
 	bool			visited;
 };
 
@@ -54,7 +54,7 @@ struct	s_main_struct
 	int				ants;
 	int				dst;
 	int				ants_at_the_end;
-	short			ants_left_at_start;
+	int				ants_left_at_start;
 	unsigned short	count_of_rooms;
 	bool			space;
 };

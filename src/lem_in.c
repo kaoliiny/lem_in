@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:37:00 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/17 12:50:11 by vbrazas          ###   ########.fr       */
+/*   Updated: 2019/06/18 20:44:01 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	add_count_of_ants(t_struct *main, char **line)
 	is_num(*line, manage_error, 2)
 	&& (main->ants = ft_atoi(*line));
 	if (main->ants <= 0 || main->ants > __INT32_MAX__)
-		manage_error(2);
+		manage_error(3);
 	main->ants_at_the_end = 0;
 	main->ants_left_at_start = main->ants;
 	ft_printf("%d\n", main->ants);
@@ -82,17 +82,16 @@ int		main(int ac, char **av)
 	t_room		*rooms;
 	t_struct	*main;
 	char		*line;
-	const int	fd = (av[1]) ? open(av[1], O_RDONLY) : 0;
 
+	ways = NULL;
 	main = ft_memalloc(sizeof(t_struct));
 	rooms = ft_memalloc(sizeof(t_room));
-	ways = ft_memalloc(sizeof(t_array));
 	main->dst = 0;
 	main->count_of_rooms = 0;
-	if (!get_next_line(fd, &line) || ac > 2)
+	if (!get_next_line(0, &line) || ac > 2 || !av)
 		manage_error(1);
 	add_count_of_ants(main, &line);
-	parsing_loop(fd, rooms, main, line);
+	parsing_loop(0, rooms, main, line);
 	find_the_ways(main, ways);
 	return (0);
 }
