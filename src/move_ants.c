@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 19:25:10 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/18 20:29:57 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/25 19:08:52 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static bool	ant_move(t_struct *main, t_room *old_room, t_room *new_room)
 	return (1);
 }
 
-void		rev_ways(t_struct *main, t_room **old)
+void		rev_ways(t_struct *main, t_room **old, char *av)
 {
 	t_room	*tmp;
 	t_room	*prev;
@@ -51,9 +51,12 @@ void		rev_ways(t_struct *main, t_room **old)
 		return ;
 	prev = *old;
 	current = (*old)->parent;
+	ft_strequ(av, "-w") &&
+	ft_printf("[%s]->[%s]", main->start->name, (*old)->name);
 	(*old)->parent = NULL;
 	while (current->parent && current->parent != main->end)
 	{
+		ft_strequ(av, "-w") && ft_printf("->[%s]", current->name);
 		tmp = current;
 		current = current->parent;
 		tmp->parent = prev;
@@ -61,6 +64,8 @@ void		rev_ways(t_struct *main, t_room **old)
 	}
 	*old = current;
 	current->parent = prev;
+	ft_strequ(av, "-w")
+	&& ft_printf("->[%s]->[%s]\n", current->name, main->end->name);
 }
 
 bool		move_the_ants_from_start(t_struct *main, t_array *ways)
@@ -91,7 +96,7 @@ bool		move_the_ants_from_start(t_struct *main, t_array *ways)
 	return (true);
 }
 
-void		move_the_ants(t_struct *main, t_array *ways)
+void		move_the_ants(t_struct *main, t_array *ways, char *av)
 {
 	int		i;
 	t_room	*tmp;
@@ -100,13 +105,14 @@ void		move_the_ants(t_struct *main, t_array *ways)
 	if (!ways->links[i])
 		manage_error(5);
 	while (ways && ways->links[i])
-		rev_ways(main, ways->links + i++);
+		rev_ways(main, ways->links + i++, av);
+	ft_strequ(av, "-w") && ft_printf("\n" RESET);
 	while (!(main->ants_at_the_end == main->ants) && (i = 0) | 1)
 	{
 		main->space = false;
 		while (ways->links[i] && !(main->ants_at_the_end == main->ants))
 		{
-			tmp = ways->links[i];
+			tmp = ways->links[i++];
 			if (tmp->full_of_ants && tmp != main->end)
 				ant_move(main, tmp, main->end);
 			while (tmp && tmp->parent && !(main->ants_at_the_end == main->ants))
@@ -114,7 +120,6 @@ void		move_the_ants(t_struct *main, t_array *ways)
 				(tmp->parent->full_of_ants) && ant_move(main, tmp->parent, tmp);
 				tmp = tmp->parent;
 			}
-			i++;
 		}
 		move_the_ants_from_start(main, ways) && ft_printf("\n");
 	}

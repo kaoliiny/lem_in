@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:37:00 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/18 20:44:01 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/25 19:26:13 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 void	manage_error(int num)
 {
 	const char	*x[12] = {"",
-	"\033[1;31musage: ./lem-in < [file]\033[0m",
-	"\033[1;31musage: map error\033[0m",
-	"\033[1;31musage: uncorrect count of ants\033[0m",
-	"\033[1;31musage: malloc error\033[0m",
-	"\033[1;31musage: links error\033[0m",
-	"\033[1;31musage: rooms can't have the same coordinates\033[0m",
-	"\033[1;31musage: error\nthere're more than one start/end points\033[0m",
-	"\033[1;31musage: the beginning and the end are not related\033[0m",
-	"\033[1;31musage: there're no rooms. Where the ants have to go?\033[0m",
-	"\033[1;31musage: rooms can't have the same name\033[0m",
+	RED "usage: ./lem-in [-w] < [file]" RESET,
+	RED "usage: map error" RESET,
+	RED "usage: uncorrect count of ants" RESET,
+	RED "usage: malloc error" RESET,
+	RED "usage: links error" RESET,
+	RED "usage: rooms can't have the same coordinates" RESET,
+	RED "usage: error\nthere're more than one start/end points" RESET,
+	RED "usage: the beginning and the end are not related" RESET,
+	RED "usage: there're no rooms. Where the ants have to go?" RESET,
+	RED "usage: rooms can't have the same name" RESET,
 	};
 
 	ft_putendl_fd(x[num], 2);
@@ -66,7 +66,7 @@ void	parsing_loop(int fd, t_room *rooms, t_struct *main, char *line)
 
 void	add_count_of_ants(t_struct *main, char **line)
 {
-	is_num(*line, manage_error, 2)
+	is_num(*line, manage_error, 3)
 	&& (main->ants = ft_atoi(*line));
 	if (main->ants <= 0 || main->ants > __INT32_MAX__)
 		manage_error(3);
@@ -83,7 +83,7 @@ int		main(int ac, char **av)
 	t_struct	*main;
 	char		*line;
 
-	ways = NULL;
+	ways = new_array(100);
 	main = ft_memalloc(sizeof(t_struct));
 	rooms = ft_memalloc(sizeof(t_room));
 	main->dst = 0;
@@ -92,6 +92,7 @@ int		main(int ac, char **av)
 		manage_error(1);
 	add_count_of_ants(main, &line);
 	parsing_loop(0, rooms, main, line);
-	find_the_ways(main, ways);
+	ft_strequ(av[1], "-w") && ft_printf(YELLOW "Found ways:\n");
+	find_the_ways(main, ways, av[1]);
 	return (0);
 }

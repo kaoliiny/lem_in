@@ -6,7 +6,7 @@
 /*   By: kaoliiny <kaoliiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 17:08:55 by kaoliiny          #+#    #+#             */
-/*   Updated: 2019/06/18 20:25:53 by kaoliiny         ###   ########.fr       */
+/*   Updated: 2019/06/25 19:08:51 by kaoliiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,13 @@ static t_room	*bfs(t_struct *main, t_room *start, unsigned short size)
 	return (0);
 }
 
-void			find_the_ways(t_struct *main, t_array *ways)
+void			find_the_ways(t_struct *main, t_array *ways, char *av)
 {
 	int		i;
 	int		j;
 	t_room	*tmp;
 
 	i = -1;
-	ways = new_array(100);
 	while ((ways->links[++i] = bfs(main, main->end, main->count_of_rooms))
 	&& !(ways->links[i] == main->end))
 	{
@@ -89,5 +88,5 @@ void			find_the_ways(t_struct *main, t_array *ways)
 			while (tmp && tmp->parent && (tmp->visited = 1))
 				tmp = tmp->parent;
 	}
-	move_the_ants(main, ways);
+	move_the_ants(main, ways, av);
 }
